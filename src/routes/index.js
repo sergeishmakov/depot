@@ -1,4 +1,4 @@
 
-export default form = (req, res) => {
+export default (req, res) => {
   res.render("index")
 };

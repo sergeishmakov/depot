@@ -15,7 +15,7 @@ import indexRouter from "./routes/index";
 
 const app = express();
 const server = http.createServer(app);
-const port = process.env.PORT || "3001";
+const port = process.env.PORT || "8000";
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -38,8 +38,8 @@ app.use(
   })
 );
 
-app.get("/", indexRouter.form);
-app.get("/users", usersRouter.form);
+app.get("/", indexRouter);
+app.get("/users", usersRouter);
 app.get("/register", registerRouter.form);
 app.post("/register", registerRouter.submit);
 
