@@ -1,0 +1,13 @@
+{
+    "configDataBase": {
+      "username": "sergey",
+      "password": "sergey",
+      "database": "users",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    },
+    "configSession": {
+      "name": "sergey",
+      "secret": "sergey"
+    }
+}
