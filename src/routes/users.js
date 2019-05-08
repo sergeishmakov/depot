@@ -1,6 +1,6 @@
-const userController = require("../controllers/userController");
+import userController from "../controllers/userController";
 
-exports.form = async (req, res) => {
+export default form = async (req, res) => {
   const items = await userController.all();
   res.render("users", {
     users: items

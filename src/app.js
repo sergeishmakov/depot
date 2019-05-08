@@ -38,7 +38,7 @@ app.use(
   })
 );
 
-app.get("/", indexRouter);
+app.get("/", indexRouter.form);
 app.get("/users", usersRouter.form);
 app.get("/register", registerRouter.form);
 app.post("/register", registerRouter.submit);

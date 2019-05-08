@@ -1,8 +1,8 @@
-const userController = require("../controllers/userController");
-const bcrypt = require("bcryptjs");
+import userController from "../controllers/userController";
+import bcrypt from "bcryptjs";
 const saltLength = 12;
 
-exports.form = (req, res) => {
+export default form = (req, res) => {
   res.render("register", {
     failed: req.session.failed,
     errors: req.session.errors
@@ -11,7 +11,7 @@ exports.form = (req, res) => {
   req.session.errors = null;
 };
 
-exports.submit = async (req, res) => {
+export default submit = async (req, res) => {
   req.session.failed = false;
   req.session.errors = [];
   req.check("email", "Invalid email addres").isEmail();
