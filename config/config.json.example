@@ -1,0 +1,13 @@
+{
+    "configDataBase": {
+      "username": "YourUsernameFromDB",
+      "password": "YourPasswordFromDB",
+      "database": "NameOfYourDb",
+      "host": "yourHost",
+      "dialect": "NameOfDb"
+    },
+    "configSession": {
+      "name": "NameOfSession",
+      "secret": "YourSecretWord"
+    }
+}
