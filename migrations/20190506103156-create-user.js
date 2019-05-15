@@ -17,6 +17,12 @@ module.exports = {
       salt: {
         type: Sequelize.STRING
       },
+      lastName: {
+        type: Sequelize.STRING
+      },
+      firstName: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         defaultValue: new Date(),
