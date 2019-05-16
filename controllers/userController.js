@@ -17,5 +17,24 @@ class userController {
       defaults: await hashPassword (data),
     });
   }
+  static async findById (id) {
+    let item = await models.users.findOne ({
+      where: {id: id},
+    });
+    return item.dataValues;
+  }
+  static async findOne (email) {
+    let item = await models.users.findOne ({
+      where: {email: email},
+    });
+    return item.dataValues;
+  }
+  static validPassword (password, user) {
+    if (bcrypt.hashSync (password, user.salt) === user.password) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 module.exports = userController;
