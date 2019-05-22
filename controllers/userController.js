@@ -21,13 +21,14 @@ class userController {
     let item = await models.users.findOne ({
       where: {id: id},
     });
-    return item.dataValues;
+    return item ? item.dataValues : null;
   }
   static async findOne (email) {
     let item = await models.users.findOne ({
       where: {email: email},
     });
-    return item.dataValues;
+
+    return item ? item.dataValues : null;
   }
   static validPassword (password, user) {
     if (bcrypt.hashSync (password, user.salt) === user.password) {

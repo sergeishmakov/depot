@@ -9,9 +9,12 @@ import cors from 'cors';
 import session from 'express-session';
 import sequelizeSession from 'connect-session-sequelize';
 import models from './models';
+import passport from 'passport';
+import config from './config/config';
+
+import sessionRouter from './routes/session';
 import registerRouter from './routes/register';
 import loginRouter from './routes/login';
-import passport from 'passport';
 
 const SequelizeStore = sequelizeSession (session.Store);
 const myStore = new SequelizeStore ({
@@ -21,10 +24,9 @@ const myStore = new SequelizeStore ({
 });
 const app = express ();
 const server = http.createServer (app);
-const port = process.env.PORT || '3000';
+const port = '3001';
 
-app.use (cors ());
-app.options ('*', cors ());
+app.use (cors ({origin: config.corsDomain, credentials: true}));
 app.use (logger ('dev'));
 app.use (bodyParser.json ());
 app.use (bodyParser.urlencoded ({extended: true}));
@@ -47,8 +49,9 @@ app.use (passport.session ());
 require ('./middleware/passport');
 myStore.sync ();
 
-app.post ('/register', registerRouter.submit);
-app.post ('/login', loginRouter.submit);
-app.get ('/checkuser', sessionRouter.autenticate);
+app.post ('/api/register', registerRouter.submit);
+app.post ('/api/login', loginRouter.submit);
+app.get ('/api/checkuser', sessionRouter.autenticate);
+app.get ('/api/logout', sessionRouter.logout);
 
 server.listen (port);

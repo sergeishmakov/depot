@@ -20,10 +20,10 @@ passport.use (
     async (email, password, done) => {
       let user = await User.findOne (email);
       if (!user) {
-        return done (null, false, {message: 'Incorrect username.'});
+        return done (null, false, {message: 'email'});
       }
       if (!User.validPassword (password, user)) {
-        return done (null, false, {message: 'Incorrect password.'});
+        return done (null, false, {message: 'password'});
       }
       return done (null, user);
     }
