@@ -1,0 +1,1 @@
+import userController from '../controllers/userController';const updateRouter = {  async updateUser (req, res) {      let user = await userController.update(req.body.data, req.body.id);      res.json ([false, user, null]);  },};export default updateRouter;
