@@ -1,0 +1,1 @@
+{  "development": {    "username": "sergey",    "password": "sergey",    "database": "store",    "host": "localhost",    "dialect": "postgres"  },  "configSession": {    "name": "sergey",    "secret": "sergey"  },  "corsDomain" : "http://localhost:3000",  "domain": "http://localhost:3001"}
