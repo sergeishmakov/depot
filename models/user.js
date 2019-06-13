@@ -8,7 +8,8 @@ export default (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     address: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
-    photo: DataTypes.STRING
+    photo: DataTypes.STRING,
+    status: DataTypes.STRING
   });
 
   return User;

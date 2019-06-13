@@ -1,1 +1,30 @@
-const sessionRouter = {  autenticate(req, res) {    if (req.user) {      res.json(        JSON.stringify(req.user, [          "email",          "id",          "lastName",          "firstName",          "phoneNumber",          "address",          "photo"        ])      );    } else {      res.json(null);    }  },  logout(req, res) {    try {      req.session.destroy();      res.json(true);    } catch (e) {      res.json(false);    }  }};export default sessionRouter;
+const sessionRouter = {
+  autenticate(req, res) {
+    if (req.user) {
+      res.json(
+        JSON.stringify(req.user, [
+          "email",
+          "id",
+          "lastName",
+          "firstName",
+          "phoneNumber",
+          "address",
+          "photo",
+          "status"
+        ])
+      );
+    } else {
+      res.json(null);
+    }
+  },
+  logout(req, res) {
+    try {
+      req.session.destroy();
+      res.json(true);
+    } catch (e) {
+      res.json(false);
+    }
+  }
+};
+
+export default sessionRouter;

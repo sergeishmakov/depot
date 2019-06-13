@@ -1,0 +1,1 @@
+const User = `type User {  id: Int!  email: String!  status: String!}`;export const types = () => [User];export const typeResolvers = {};

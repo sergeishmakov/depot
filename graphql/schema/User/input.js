@@ -1,0 +1,1 @@
+const Input = `input updateUserInput {  status:String!  id: Int!}`;export default () => [Input];

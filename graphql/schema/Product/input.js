@@ -1,0 +1,1 @@
+const Input = `input productInput {  name: String!  instock: Int  photo: String  firm: String!  category: String!  date: String  model: String!  description: String}`;export default () => [Input];

@@ -12,6 +12,8 @@ import models from "./models";
 import passport from "passport";
 import config from "./config/config";
 import fs from "fs";
+import { ApolloServer } from "apollo-server-express";
+import schema from "./graphql/schema";
 
 import sessionRouter from "./routes/session";
 import registerRouter from "./routes/register";
@@ -56,11 +58,15 @@ app.post("/api/login", loginRouter.submit);
 app.get("/api/checkuser", sessionRouter.autenticate);
 app.get("/api/logout", sessionRouter.logout);
 app.post("/api/update", updateRouter.updateUser);
-
 app.get("/public/images", (req, res) => {
   const file = req.query.file;
   const resFile = fs.readFileSync(__dirname + "/public/images" + file);
   res.writeHead(200, { "Content-Type": "image/png" });
   res.end(resFile, "binary");
 });
-server.listen(port);
+
+const serverApollo = new ApolloServer({ schema, playground: true });
+serverApollo.applyMiddleware({ app, path: "/api" });
+app.listen({ port: port }, () => {
+  console.log(`Server was start on port ${port}`);
+});

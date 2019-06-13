@@ -11,6 +11,10 @@ const hashPassword = async data => {
 };
 
 class userController {
+  static async getUsers() {
+    let users = await models.users.findAll();
+    return users.map(user => user.dataValues);
+  }
   static async findOrCreate(data) {
     return models.users.findOrCreate({
       where: { email: data.email },
@@ -37,6 +41,14 @@ class userController {
       return data;
     } else {
       return null;
+    }
+  }
+  static async delete(data) {
+    let res = await models.users.destroy({ where: { id: data.id } });
+    if (res) {
+      return true;
+    } else {
+      return false;
     }
   }
 

@@ -1,0 +1,1 @@
+import userController from "../../../controllers/userController";const Query = `  extend type Query {    getUsers:[User]  }`;export const queryTypes = () => [Query];export const queryResolvers = {  Query: {    getUsers: async () => {      let users = await userController.getUsers();      return users;    }  }};

@@ -32,6 +32,9 @@ module.exports = {
       photo: {
         type: Sequelize.STRING
       },
+      status: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         defaultValue: new Date(),
