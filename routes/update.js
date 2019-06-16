@@ -5,10 +5,11 @@ import config from "../config/config.json";
 
 const updateRouter = {
   async updateUser(req, res) {
-    saveUserPhotoiInDirectory(
+    saveUserPhotoInDirectory(
       req.body.id,
       req.body.localPhoto,
-      req.body.localPhotoName
+      req.body.localPhotoName,
+      "user"
     );
     const photo =
       config.domain +
@@ -28,9 +29,16 @@ const updateRouter = {
 
 export default updateRouter;
 
-const saveUserPhotoiInDirectory = (id, localPhoto, localPhotoName) => {
-  const routes = __dirname + "/../public/images/users/" + id + "/avatar";
-  rimraf.sync(routes);
+export const saveUserPhotoInDirectory = (
+  id,
+  localPhoto,
+  localPhotoName,
+  type
+) => {
+  const routes = `${__dirname}/../public/images/${
+    type === "product" ? `products/${id}/image` : `users/${id}/avatar`
+  }`;
+
   fs.mkdirSync(routes, { recursive: true }, err => {});
   fs.writeFileSync(
     routes + "/" + localPhotoName,
