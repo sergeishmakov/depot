@@ -20,7 +20,6 @@ export const mutationResolvers = {
       return product;
     },
     updateProduct: async (_, { input }) => {
-      console.log(input.localPhoto, input.localPhotoName);
       saveUserPhotoInDirectory(
         input.id,
         input.localPhoto,
