@@ -19,6 +19,7 @@ import sessionRouter from "./routes/session";
 import registerRouter from "./routes/register";
 import loginRouter from "./routes/login";
 import updateRouter from "./routes/update";
+import cartRouter from "./routes/cart";
 
 const SequelizeStore = sequelizeSession(session.Store);
 const myStore = new SequelizeStore({
@@ -57,6 +58,8 @@ app.post("/api/register", registerRouter.submit);
 app.post("/api/login", loginRouter.submit);
 app.get("/api/checkuser", sessionRouter.autenticate);
 app.get("/api/logout", sessionRouter.logout);
+app.post("/api/tocart", cartRouter.addToCart);
+app.get("/api/getcart", cartRouter.getCart);
 app.post("/api/update", updateRouter.updateUser);
 app.get("/public/images", (req, res) => {
   const file = req.query.file;
